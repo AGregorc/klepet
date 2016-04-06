@@ -77,7 +77,7 @@ $(document).ready(function() {
     var novElement = divElementEnostavniTekst(sporocilo.besedilo);
     $('#sporocila').append(novElement);
   });
-  
+
   socket.on('kanali', function(kanali) {
     $('#seznam-kanalov').empty();
 
@@ -99,6 +99,12 @@ $(document).ready(function() {
     for (var i=0; i < uporabniki.length; i++) {
       $('#seznam-uporabnikov').append(divElementEnostavniTekst(uporabniki[i]));
     }
+    $('#seznam-uporabnikov div').click(function() {
+       console.log("Kliknili smo enega uporabnika");
+       var sporocilo = $('#poslji-sporocilo');
+       sporocilo.val('/zasebno "' + $(this).text() + '" ');
+       sporocilo.focus();
+     });
   });
 
   setInterval(function() {
@@ -112,8 +118,8 @@ $(document).ready(function() {
     procesirajVnosUporabnika(klepetApp, socket);
     return false;
   });
-  
-  
+
+
 });
 
 function dodajSmeske(vhodnoBesedilo) {
