@@ -21,7 +21,7 @@ function divElementHtmlTekst(sporocilo) {
 
 function procesirajVnosUporabnika(klepetApp, socket) {
   var sporocilo = $('#poslji-sporocilo').val();
-  sporocilo = sporocilo.replace(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*).(jpg|gif|png)/g, 'mojaKoda630 <a href="$&">mojaKoda6442<img src="$&" width="200px" margin-left="20px" /> </a> mojaKoda036 ');
+  sporocilo = sporocilo.replace(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*).(jpg|gif|png)/g, 'mojaKoda630 <a href="$&">mojaKoda6442<img src="$&" width="200px" style="margin-left:20px" /> </a> mojaKoda036 ');
   sporocilo = dodajSmeske(sporocilo);
   var sistemskoSporocilo;
 
