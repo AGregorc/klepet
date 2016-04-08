@@ -3,8 +3,8 @@ function divElementEnostavniTekst(sporocilo) {
   var jeYoutube = sporocilo.indexOf('iframe src="https://www.youtube.com/embed/') > -1;
   if (jeSmesko || jeYoutube) {
     sporocilo = sporocilo.replace(/\</g, '&lt;').replace(/\>/g, '&gt;').replace('&lt;img', '<img').replace('png\' /&gt;', 'png\' />')
-                         .replace(/&lt;iframe src="https:\/\/www.youtube.com\/embed\//g, '<iframe src="https://www.youtube.com/embed/')
-                         .replace(/allowfullscreen&gt;&lt;\/iframe&gt;/g, 'allowfullscreen></iframe>');
+                         .replace(/&lt;iframe src="https:\/\/www.youtube.com\/embed\//g, '<br><iframe src="https://www.youtube.com/embed/')
+                         .replace(/allowfullscreen&gt;&lt;\/iframe&gt;/g, 'allowfullscreen></iframe><br>');
     return $('<div style="font-weight: bold"></div>').html(sporocilo);
   } else {
     return $('<div style="font-weight: bold;"></div>').text(sporocilo);
@@ -17,8 +17,8 @@ function divElementHtmlTekst(sporocilo) {
 
 function procesirajVnosUporabnika(klepetApp, socket) {
   var sporocilo = $('#poslji-sporocilo').val();
-  sporocilo = sporocilo.replace(/https:\/\/(?:www\.)?youtube.com\/watch\?v=\w+(&\S*)?$/g, '<iframe src="$&" width="200px" hight="150px" style="margin-left:20px" allowfullscreen></iframe>')
-                       .replace(/https:\/\/www.youtube.com\/watch\?v=/g, 'https://www.youtube.com/embed/');
+  sporocilo = sporocilo.replace(/https:\/\/(?:www\.)?youtube.com\/watch\?v=\w+(&\S*)?/g, '$&<iframe src="$&" width="200px" hight="150px" style="margin-left:20px" allowfullscreen></iframe>')
+                       .replace(/<iframe src="https:\/\/www.youtube.com\/watch\?v=/g, '<iframe src="https://www.youtube.com/embed/');
   sporocilo = dodajSmeske(sporocilo);
   var sistemskoSporocilo;
 
