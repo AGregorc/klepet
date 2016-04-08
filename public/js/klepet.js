@@ -25,7 +25,6 @@ Klepet.prototype.procesirajUkaz = function(ukaz) {
     case 'dregljaj':
       besede.shift();
       var prejemnik = besede.join(' ');
-      console.log(prejemnik);
       this.socket.emit('dregljaj', { vzdevek: prejemnik });
       if (prejemnik) {
           sporocilo = 'Dregljaj za ' + prejemnik;
