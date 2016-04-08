@@ -10,7 +10,6 @@ function divElementEnostavniTekst(sporocilo) {
                         .replace(/&gt;mojaKoda6442/g, '>')
                         .replace(/&lt;iframe src="https:\/\/www.youtube.com\/embed\//g, '<br><iframe src="https://www.youtube.com/embed/')
                         .replace(/allowfullscreen&gt;&lt;\/iframe&gt;/g, 'allowfullscreen></iframe><br>');
-    console.log(sporocilo);
     return $('<div style="font-weight: bold"></div>').html(sporocilo);
   }
   else {
