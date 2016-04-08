@@ -6,8 +6,10 @@ function divElementEnostavniTekst(sporocilo) {
   }
   if (jeSlika || jeSmesko) {
     sporocilo = sporocilo.replace(/\</g, '&lt;').replace(/\>/g, '&gt;').replace(/&lt;img/g, '<img').replace(/png\' \/&gt;/g, 'png\' />')
-                        .replace(/"20px" \/&gt;/g, '20px>').replace(/mojaKoda630 &lt;a href=/g, '<a href=').replace(/&lt;\/a&gt; mojaKoda036/g, '</a>')
+                        .replace(/"20px" \/&gt;/g, '20px>').replace(/mojaKoda630 &lt;a href=/g, '<br><a href=')
+                        .replace(/width="200px" style="margin-left:20px" \/&gt; &lt;\/a&gt; mojaKoda036/g, 'width="200px" style="margin-left:20px" /> </a>')
                         .replace(/&gt;mojaKoda6442/g, '>');
+    console.log(sporocilo);
     return $('<div style="font-weight: bold"></div>').html(sporocilo);
   }
   else {
@@ -21,7 +23,7 @@ function divElementHtmlTekst(sporocilo) {
 
 function procesirajVnosUporabnika(klepetApp, socket) {
   var sporocilo = $('#poslji-sporocilo').val();
-  sporocilo = sporocilo.replace(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*).(jpg|gif|png)/g, 'mojaKoda630 <a href="$&">mojaKoda6442<img src="$&" width="200px" style="margin-left:20px" /> </a> mojaKoda036 ');
+  sporocilo = sporocilo.replace(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*).(jpg|gif|png)/g, '$& mojaKoda630 <a href="$&">mojaKoda6442<img src="$&" width="200px" style="margin-left:20px" /> </a> mojaKoda036 ');
   sporocilo = dodajSmeske(sporocilo);
   var sistemskoSporocilo;
 
